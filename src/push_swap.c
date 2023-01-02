@@ -147,6 +147,7 @@ void ft_stackfree(t_stack **stack)
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
+	t_stack *b;
 	print_testcase(argc, argv);//delete
 	//error handling
 	judge_input(argc, argv);
@@ -154,7 +155,6 @@ int	main(int argc, char **argv)
 	input_to_stack(&a, argc, argv);
 	//check_stack(&a, argc - 1);
 	//make b
-	t_stack *b;
 	b = NULL;
 	//sort
 	push_swap(argc, &a, &b);

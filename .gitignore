@@ -71,11 +71,16 @@ dkms.conf
 *.vsix
 
 #add
-check_Mac
+checker_Mac
 pain.sh
 pain2.sh
 trash.c
 push_swap
-push_swap_visualizer/*
-push-swap-pain/*
-test/*
+push_swap_visualizer
+_practice
+push-swap-pain
+tests
+test.c
+test.sh
+test2.c
+push_swap.sh
