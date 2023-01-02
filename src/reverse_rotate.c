@@ -19,7 +19,7 @@ void	rra(t_stack **stack, int flg)
 	}
 	last = *stack;
 	*stack = (*stack)->next;
-	last->next =NULL;
+	last->next = NULL;
 	(*stack)->next = first;
 	if (!flg)
 		write(1,"rra\n",4);	
@@ -44,7 +44,7 @@ void	rrb(t_stack **stack, int flg)
 	}
 	last = *stack;
 	*stack = (*stack)->next;
-	last->next =NULL;
+	last->next = NULL;
 	(*stack)->next = first;
 	if (!flg)
 		write(1,"rrb\n",4);	

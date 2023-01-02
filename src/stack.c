@@ -4,7 +4,7 @@ t_stack	*ft_stacknew(int value)
 {
 	t_stack	*ret;
 
-	ret = malloc(sizeof(t_stack));
+	ret = ft_calloc(1, sizeof(t_stack));
 	if (!ret)
 		return (NULL);
 	ret->value = value;

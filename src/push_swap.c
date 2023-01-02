@@ -23,172 +23,148 @@ void print_testcase(int argc, char **argv)
 	printf("\n");
 }
 
-void	ft_sort_two(t_stack **stack)
-{
-	t_stack	*head;
-	int	num[2];
-	int	i;
+// int	compare_value(t_stack **stack,int i,int j)
+// {
+// 	t_stack	*last;
+// 	t_stack *tmp;
+// 	int		count;
 
-	head = *stack;
-	i = 0;
-	while (head != NULL)
-	{
-		num[i] = head->value;
-		head = head->next;
-		i++;
-	}
-	printf("\nnum : %d,%d\n", num[0], num[1]);
-	if (num[0] > num[1])
-		rra(stack, 0);
+// 	count = 0;
+
+// 	while (count < i - 1)
+// 	{
+// 		stack = stack->next;
+// 		count++;
+// 	}
+// 	last = stack;
+// 	stack = stack->next;
+// 	count++;
+// 	tmp = stack;
+// 	while (count < j)
+// 	{
+// 		stack = stack->next;
+// 		count++;
+// 	}
+// 	if (tmp->value > stack->value)
+// 		return (1)
+// 	else
+// 		return (0)
+
+// }
+
+// t_stack	ft_bubble_sort(t_stack **stack)
+// {
+// 	t_stack	*ret;
+// 	int		size;
+// 	int		i;
+// 	int		j;
+
+// 	size = ft_stacksize(*stack);
+// 	i = 1;
+// 	while (i < size)
+// 	{
+// 		j = i + 1;
+// 		while (j < size)
+// 		{
+// 			if (compare_value(stack, i, j))
+// 				change_value(stack, i, j);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
+
+// TODO:make sort
+
+// int	insert_index(t_stack **b, int a_top, int b_size)
+// {
+// 	t_stack	*front;
+// 	t_stack *back;
+// 	t_stack	*last;
+// 	int	i;
+
+// 	i = 0;
+// 	front = *b;
+// 	last = ft_stacklast(b);
+// 	if (front->value > a_top && a_top > last->value || front->value < a_top && a_top < last->value)
+// 		return (i);
+// 	while (i < b_size)
+// 	{
+// 		back = front->next;
+// 		if (front->value > a_top && a_top > back->value || front->value < a_top && a_top < back->value)
+// 			return(i);
+// 		i++;
+// 		front = front->next;
+// 	}
+// 	return (b_size + 1);
+// }
+
+// void	ft_sort_medium(t_stack **a, t_stack **b)
+// {
+// 	int	index;
+// 	int	b_size;
+
+// 	while (ft_stacksize(a) > 0)
+// 	{
+// 		b_size = ft_stacksize(b);
+// 		if (b_size <= 1)
+// 			pb(a, b);
+// 		else
+// 		{
+// 			index = insert_index(b, a->value, b_size);
+// 			//TODO : ft_move_min(b_size, index, a, b);->bを回すversionを作らないといけない
+// 		}
+// 	}
+// }
+
+void	push_swap(int argc, t_stack **a, t_stack **b)
+{
+	if (argc - 1 == 2)
+		ft_sort_two(a);
+	if (argc - 1 == 3)
+	 	ft_sort_three(a); 
+	if (4 <= argc - 1 && argc - 1 <= 6)
+		ft_sort_six_or_less(a, b);
+	// else
+	// 	ft_sort_medium(a, b);
 }
-
-void	ft_sort_three(t_stack **stack)
+//解放
+void ft_stackfree(t_stack **stack)
 {
-	t_stack	*head;
-	int	num[3];
-	int	i;
+	t_stack	*temp;
 
-	head = *stack;
-	i = 0;
-	while (head != NULL)
+	if (!stack)
+		return ;
+	while (*stack)
 	{
-		num[i] = head->value;
-		head = head->next;
-		i++;
+		temp = *stack;
+		*stack = (*stack)->next;
+		free(temp);
 	}
-	if (num[0] > num[1] && num[1] < num[2] && num[0] <= num[2])
-		sa(stack, 0);
-	if (num[0] > num[1] && num[1] <= num[2] && num[0] > num[2])
-		ra(stack, 0);
-	if (num[0] <= num[1] && num[1] > num[2] && num[0] >= num[2])
-		rra(stack, 0);
-	if (num[0] > num[1] && num[1] > num[2] && num[0] > num[2])
-	{
-		ra(stack, 0);
-		sa(stack, 0);
-	}
-	if (num[0] < num[1] && num[1] > num[2] && num[0] < num[2])
-	{
-		rra(stack, 0);
-		sa(stack, 0);
-	}
-}
-
-int	ft_min_index(t_stack **stack)
-{
-	t_stack*	head;
-	long	min;
-	int		index;
-	int		i;
-
-	head = *stack;
-	min = head->value;
-	index = 1;//1 or 0 sizeにあわせるなら1で良さげ
-	i = 1;
-	while (head != NULL)
-	{
-		if (min > head->value)
-		{
-			min = head->value;
-			index = i;
-		}
-		head = head->next;
-		i++;
-	}
-	return (index);
-}
-
-void	ft_move_min(int size, int index, t_stack **a, t_stack **b)
-{
-	if (index <= (size + 1) / 2)
-	{
-		while (index - 1 > 0)//上に押し上げる
-		{
-			ra(a, 0);
-			index--;
-		}
-	}
-
-	else
-	{
-		// printf("index -in %d \n", index);
-		while (size - index + 1 > 0)//したから
-		{
-			// printf("size : %d index : %d \n", size, index);
-			rra(a, 0);
-			index++;
-		}		
-	}
-	pb(a, b);
-	// printf("------------\n");
-}
-
-void	ft_sort_six_or_less(t_stack **a, t_stack **b)
-{
-	int	size;
-	int	i;
-
-	size = ft_stacksize(*a);
-	i = 0;
-	while (size - i > 3)
-	{
-		// printf("index : %d\n",ft_min_index(a));
-		//ft_min_stack();<-いらんかも
-		ft_move_min(size - i, ft_min_index(a), a, b);//<-indexわかったらそれをpbしていく
-		i++;
-		// printf("a : ");print_stack(*a);printf("\n");
-		// printf("b : ");print_stack(*b);printf("\n");
-	}
-	//printf("a : ");print_stack(*a);printf("\n");
-	ft_sort_three(a);//a
-	//pa pa pa
-	while (i > 0)
-	{
-		pa(a, b);
-		i--;
-	}
+	*stack = NULL;
 }
 
 int	main(int argc, char **argv)
 {
-	int		i;
 	t_stack	*a;
 	print_testcase(argc, argv);//delete
+	//error handling
 	judge_input(argc, argv);
 	//make a
-	i = 1;
-	while (i < argc)
-	{
-		if (i == 1)
-			a = ft_stacknew(ft_atoi_ex(argv[i]));
-		else
-			ft_stackadd_back(&a, ft_stacknew(ft_atoi_ex(argv[i])));
-	//TODO: mallocできなかった時のerror処理 -> stacknew内で出来てるから大丈夫
-		i++;
-	}
-	//TODO: make b
+	input_to_stack(&a, argc, argv);
+	//check_stack(&a, argc - 1);
 	//make b
 	t_stack *b;
-	b = ft_stacknew(0);
+	b = NULL;
 	//sort
-	//ft_sort();
-	if (argc - 1 == 2)
-		ft_sort_two(&a);
-	if (argc - 1 == 3)
-	 	ft_sort_three(&a); 
-	if (4 <= argc - 1 && argc - 1 <= 6)
-		ft_sort_six_or_less(&a, &b);
-	//-簡単なリストを作成-
-	// t_stack *head;
-	// head = ft_stacknew(1);
-	// ft_stackadd_back(&head, ft_stacknew(2));
-	// ft_stackadd_back(&head, ft_stacknew(3));
-	// ft_stackadd_back(&head, ft_stacknew(4));
-	//-----------------
-	//rrr(&stack, &head);
+	push_swap(argc, &a, &b);
+
 	//-test-
 	printf("a : ");print_stack(a);printf("\n");
-	// printf("b : ");print_stack(b);printf("\n");
-	return (0);
+	printf("b : ");print_stack(b);printf("\n");
 
+	// ft_stackfree(&a);
+	// ft_stackfree(&b);
+	//system("leaks push_swap");
+	return (0);
 }

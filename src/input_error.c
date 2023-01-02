@@ -51,7 +51,7 @@ int	ft_isnumber(char *argv_i)
 	int	j;
 
 	j = 0;
-	if (argv_i[j] == '-')
+	if (argv_i[j] == '-' || argv_i[j] == '+')
 		j++;
 	while (argv_i[j])
 	{
@@ -79,7 +79,6 @@ void	judge_input(int argc, char **argv)
 			error();
 		i++;
 	}
-
 }
 /*
 int	main(void)
