@@ -42,10 +42,10 @@ int	shrink_number(int *array, int size, int nbr)
 	while (i < size)
 	{
 		if (array[i] == nbr)
-			return (i);
+			return (i + 1);
 		i++;
 	}
-	return (array[i]);
+	return (i + 1);
 }
 /*
 int	main(int argc, char **argv)

@@ -8,8 +8,11 @@ SRCS = src/push_swap.c \
 	src/input_error.c \
 	src/stack.c \
 	src/small.c \
+	src/small2.c \
 	src/shrink.c \
-	src/input.c
+	src/input.c \
+	src/medium.c \
+	src/order.c
 
 LIBFT_DIR = libft
 

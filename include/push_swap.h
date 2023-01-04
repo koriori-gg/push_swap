@@ -46,8 +46,15 @@ int		ft_min_index(t_stack **stack);
 void	ft_move_min(int size, int index, t_stack **a, t_stack **b);
 void	ft_sort_six_or_less(t_stack **a, t_stack **b);
 //shrink
-int	*coordinate_compression(int size, char **argv);
-int	shrink_number(int *array, int size, int nbr);
+int		*coordinate_compression(int size, char **argv);
+int		shrink_number(int *array, int size, int nbr);
 //input
 void	input_to_stack(t_stack **a, int argc, char **argv);
+void	double_check(int *array, int size);
+//medium
+void	insert_sort(t_stack **a, t_stack **b);
+//order
+int	judge_order(t_stack **stack, int max, int min);
+int	search_max(t_stack **stack);
+int	search_min(t_stack **stack);
 #endif

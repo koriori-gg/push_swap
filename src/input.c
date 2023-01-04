@@ -22,7 +22,7 @@ void	input_to_stack(t_stack **a, int argc, char **argv)
 	}
 }
 
-static void	double_check(int *array, int size)
+void	double_check(int *array, int size)
 {
 	int	i;
 	int	j;
