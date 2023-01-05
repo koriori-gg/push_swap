@@ -1,5 +1,5 @@
 #include "../include/push_swap.h"
-
+/*
 static void print_stack(t_stack *stack)
 {
 	t_stack *node;
@@ -22,9 +22,29 @@ void	print_testcase(int argc, char **argv)
 		printf("%s ",argv[i++]);
 	printf("\n");
 }
+*/
+int	issorted(t_stack **stack)
+{
+	t_stack	*cur;
+	int		min;
+
+	cur = *stack;
+	min = cur->value;
+	cur = cur->next;
+	while (cur != NULL)
+	{
+		if (min > cur->value)
+			return (0);
+		min = cur->value;
+		cur = cur->next;
+	}
+	return (1);
+}
 
 void	push_swap(int argc, t_stack **a, t_stack **b)
 {
+	if (issorted(a))
+		return ;
 	if (argc - 1 == 2)
 		ft_sort_two(a);
 	else if (argc - 1 == 3)
@@ -56,7 +76,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack *b;
-	print_testcase(argc, argv);//delete
+	// print_testcase(argc, argv);//delete
 	//error handling
 	judge_input(argc, argv);
 	//make a
@@ -65,16 +85,11 @@ int	main(int argc, char **argv)
 	//make b
 	b = NULL;
 	//sort
-	// int flg = judge_order(&a, search_max(&a), search_min(&a));
-	// if (flg)
-	// 	printf("koujyun %d\n",flg);
-	// else
-	// 	printf("syoujyun\n");
 	push_swap(argc, &a, &b);
-
+	//TODO: ソートできたか確認する関数
 	//-test-
-	printf("a : ");print_stack(a);printf("\n");
-	printf("b : ");print_stack(b);printf("\n");
+	// printf("a : ");print_stack(a);printf("\n");
+	// printf("b : ");print_stack(b);printf("\n");
 
 	// ft_stackfree(&a);
 	// ft_stackfree(&b);

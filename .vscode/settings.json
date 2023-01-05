@@ -24,6 +24,7 @@
 		"__tree": "c",
 		"initializer_list": "c",
 		"map": "c",
-		"unordered_map": "c"
+		"unordered_map": "c",
+		"variant": "c"
 	}
 }

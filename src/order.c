@@ -48,6 +48,7 @@ int	judge_order(t_stack **stack, int max, int min)
 	nex = cur ->next;
 	while (nex != NULL)
 	{
+		// printf("judge_order pre:%d cur:%d nex:%d\n",pre->value, cur->value, nex->value);
 		if (cur->value != max && cur->value != min)
 		{
 			if (pre->value < cur->value && cur->value < nex->value)
@@ -59,6 +60,16 @@ int	judge_order(t_stack **stack, int max, int min)
 		cur = cur->next;
 		nex = nex->next;
 	}
+	nex = *stack;
+	// printf("judge_order pre:%d cur:%d nex:%d\n",pre->value, cur->value, nex->value);
+	if (cur->value != max && cur->value != min)
+	{
+		if (pre->value < cur->value && cur->value < nex->value)
+			return (0);
+		else if (pre->value > cur->value && cur->value > nex->value)
+			return (1);
+	}
+	// printf("judge_order not");
 	return (0);
 }
 
