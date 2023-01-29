@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   small.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/27 12:10:46 by ihashimo          #+#    #+#             */
+/*   Updated: 2023/01/27 12:10:46 by ihashimo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
-//sort a
+
 void	ft_sort_two(t_stack **stack)
 {
 	t_stack	*head;
-	int	num[2];
-	int	i;
+	int		num[2];
+	int		i;
 
 	head = *stack;
 	i = 0;
@@ -21,8 +33,8 @@ void	ft_sort_two(t_stack **stack)
 void	ft_sort_three(t_stack **stack)
 {
 	t_stack	*head;
-	int	num[3];
-	int	i;
+	int		num[3];
+	int		i;
 
 	head = *stack;
 	i = 0;

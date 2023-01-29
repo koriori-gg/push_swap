@@ -5,7 +5,6 @@ void	insert_number(t_stack **a, t_stack **b, int index)
 	int	b_size;
 
 	b_size = ft_stacksize(*b);
-	// printf("bsize %d, index %d\n", b_size, index);
 	if (index <= (b_size + 1) / 2)
 	{
 		while (index > 0)
@@ -23,24 +22,21 @@ void	insert_number(t_stack **a, t_stack **b, int index)
 		}
 	}
 	pb(a,b);
-	
 }
 //降順　654321
-void	descending_insert(t_stack **a, t_stack **b, int a_top)
+int	descending_count(t_stack **b, int a_top)
 {
 	t_stack	*pre;
 	t_stack	*cur;
-	int		i;
+	int		index;
 	int		b_max;
 
 	pre = ft_stacklast(*b);
 	cur = *b;
-	i = 0;
+	index = 0;
 	b_max = search_max(b);
-	// printf("des\n");
 	while (pre != NULL)
 	{
-		// printf("a_top %d: pre %d: cur %d\n", a_top, pre->value, cur->value);
 		if (pre->value > a_top && a_top > cur->value)
 			break;
 		else if (cur->value == b_max && pre->value < a_top && a_top > cur->value)
@@ -49,12 +45,12 @@ void	descending_insert(t_stack **a, t_stack **b, int a_top)
 			break;
 		pre = cur;
 		cur = cur->next;
-		i++;
+		index++;
 	}
-	insert_number(a, b, i);
+	return (index);
 }
 //昇順 123456
-void	ascending_insert(t_stack **a, t_stack **b, int a_top)
+int	ascending_count(t_stack **b, int a_top)
 {
 	t_stack	*pre;
 	t_stack	*cur;
@@ -64,10 +60,8 @@ void	ascending_insert(t_stack **a, t_stack **b, int a_top)
 	cur = *b;
 	index = 0;
 	b_max = search_max(b);
-	// printf("asc\n");
 	while (pre != NULL)
 	{
-		// printf("a_top %d: pre %d: cur %d\n", a_top, pre->value, cur->value);
 		if (pre->value < a_top && a_top < cur->value)
 			break;
 		else if (pre->value == b_max && pre->value < a_top && a_top > cur->value)
@@ -78,20 +72,41 @@ void	ascending_insert(t_stack **a, t_stack **b, int a_top)
 		cur = cur->next;
 		index++;
 	}
-	insert_number(a, b, index);
+	return (index);
 }
 
-// static void print_stack2(t_stack *stack)
-// {
-// 	t_stack *node;
+void	pre_rotate(t_stack **a, int num)
+{
+	t_stack	*head;
+	int	size;
+	int	index;
 
-// 	node = stack;
-// 	while (node != NULL)
-// 	{
-// 		printf("%d, ", node->value);
-// 		node = node->next;
-// 	}
-// }
+	head =*a;
+	index = 0;
+	while (head != NULL && head->value != num)
+	{
+		head = head->next;
+		index++;
+	}
+	size = ft_stacksize(*a);
+	if (index <= (size + 1) / 2)
+	{
+		while (index > 0)
+		{
+			ra(a, 0);
+			index--;
+		}
+	}
+	else
+	{
+		while (size - index > 0)
+		{
+			rra(a, 0);
+			index++;
+		}
+	}
+}
+
 int	move_a(t_stack **a, int num)
 {
 	t_stack	*cur;
@@ -114,18 +129,14 @@ int	move_a(t_stack **a, int num)
 
 int	move_b(t_stack **b, int num)
 {
-	t_stack	*pre;
-	t_stack	*cur;
 	int	index;
 	int	size;
 
-	pre = *b;
-	cur = pre->next;
 	size = ft_stacksize(*b);
 	if (judge_order(b, search_max(b), search_min(b)))
-		index = ;
+		index = descending_count(b, num);
 	else
-		index = ;
+		index = ascending_count(b, num);
 	if (index <= (size + 1) / 2)
 		return (index);
 	else
@@ -145,7 +156,7 @@ int	search_min_move(t_stack **a, t_stack **b)
 	{
 		if (count > move_a(a, cur->value) + move_b(b, cur->value))
 			ret = cur->value;
-		cur = cur->value;
+		cur = cur->next;
 	}
 	return (ret);
 }
@@ -165,19 +176,15 @@ void	insert_sort(t_stack **a, t_stack **b)
 		i++;
 	}
 	size = ft_stacksize(*a);
-	// printf("a : ");print_stack2(*a);printf("\n");
-	// printf("b : ");print_stack2(*b);printf("\n");
 	while (size > 0)
 	{
+		pre_rotate(a,search_min_move(a, b));
 		if (judge_order(b, search_max(b), search_min(b)))
-			descending_insert(a, b, (*a)->value);
+			insert_number(a, b, descending_count(b, (*a)->value));
 		else
-			ascending_insert(a, b, (*a)->value);
+			insert_number(a, b, ascending_count(b, (*a)->value));
 		size--;
-		// printf("a : ");print_stack2(*a);printf("\n");
-		// printf("b : ");print_stack2(*b);printf("\n");
 	}
-	//b->a
 	if (judge_order(b, search_max(b), search_min(b)))
 	{
 		while ((*b)->value != max)

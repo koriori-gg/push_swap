@@ -1,41 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 12:07:23 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/27 12:07:24 by ihashimo         ###   ########.fr       */
+/*   Created: 2023/01/27 12:01:22 by ihashimo          #+#    #+#             */
+/*   Updated: 2023/01/27 12:01:22 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	pa(t_stack **stack_a, t_stack **stack_b)
+void	ft_stackfree(t_stack **stack)
 {
-	int		size;
-	t_stack	*tmp;
+	t_stack	*temp;
 
-	size = ft_stacksize(*stack_b);
-	if (size <= 0)
+	if (!stack)
 		return ;
-	tmp = *stack_b;
-	*stack_b = (*stack_b)->next;
-	ft_stackadd_front(stack_a, tmp);
-	write(1, "pa\n", 3);
+	while (*stack)
+	{
+		temp = *stack;
+		*stack = (*stack)->next;
+		free(temp);
+	}
+	*stack = NULL;
 }
 
-void	pb(t_stack **stack_a, t_stack **stack_b)
+int	is_sorted(t_stack **stack)
 {
-	int		size;
-	t_stack	*tmp;
+	t_stack	*pre;
+	t_stack	*cur;
 
-	size = ft_stacksize(*stack_a);
-	if (size <= 0)
-		return ;
-	tmp = *stack_a;
-	*stack_a = (*stack_a)->next;
-	ft_stackadd_front(stack_b, tmp);
-	write(1, "pb\n", 3);
+	pre = *stack;
+	cur = pre->next;
+	while (cur != NULL)
+	{
+		if (pre->value > cur->value)
+			return (0);
+		pre = pre->next;
+		cur = cur->next;
+	}
+	return (1);
 }

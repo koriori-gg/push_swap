@@ -28,10 +28,9 @@ void	rr(t_stack **stack_a, t_stack **stack_b);
 void	rra(t_stack **stack, int flg);
 void	rrb(t_stack **stack, int flg);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
-//error handring <-staticにできないかを考える
-int		ft_atoi_ex(const char *nptr);
+//error handring <-staticにできないかを考え
 void	error();
-int		ft_isnumber(char *argv_i);
+int	ft_atoi_ex(const char *nptr);
 void	judge_input(int argc, char **argv);
 //stack
 t_stack	*ft_stacknew(int value);
@@ -44,17 +43,24 @@ void	ft_sort_two(t_stack **stack);
 void	ft_sort_three(t_stack **stack);
 int		ft_min_index(t_stack **stack);
 void	ft_move_min(int size, int index, t_stack **a, t_stack **b);
-void	ft_sort_six_or_less(t_stack **a, t_stack **b);
+void	ft_sort_four_to_six(t_stack **a, t_stack **b);
 //shrink
 int		*coordinate_compression(int size, char **argv);
 int		shrink_number(int *array, int size, int nbr);
 //input
 void	input_to_stack(t_stack **a, int argc, char **argv);
 void	double_check(int *array, int size);
-//medium
-void	insert_sort(t_stack **a, t_stack **b);
 //order
-int	judge_order(t_stack **stack, int max, int min);
-int	search_max(t_stack **stack);
-int	search_min(t_stack **stack);
+int		judge_order(t_stack **stack, int max, int min);
+int		search_max(t_stack **stack);
+int		search_min(t_stack **stack);
+//utils
+int		is_sorted(t_stack **stack);
+void 	ft_stackfree(t_stack **stack);
+//binary
+void	binary_radix_sort(t_stack **a, t_stack **b);
+void	ternary_radix_sort(t_stack **a, t_stack **b);
+//print
+void 	print_stack(t_stack *stack);
+void	print_testcase(int argc, char **argv);
 #endif

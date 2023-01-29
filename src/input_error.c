@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_error.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/27 12:00:58 by ihashimo          #+#    #+#             */
+/*   Updated: 2023/01/27 12:00:59 by ihashimo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 static int	overflow_int(long num, const char *nptr, size_t i, int sign)
@@ -39,14 +51,13 @@ int	ft_atoi_ex(const char *nptr)
 	return (sign * num);
 }
 
-
 void	error()
 {
-	write(1,"error\n",6);
+	write(1, "error\n", 6);
 	exit(1);
 }
 
-int	ft_isnumber(char *argv_i)
+static int	ft_isnumber(char *argv_i)
 {
 	int	j;
 

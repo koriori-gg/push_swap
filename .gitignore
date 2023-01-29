@@ -72,11 +72,13 @@ dkms.conf
 
 #add
 checker_Mac
+checker
 pain.sh
 pain2.sh
 trash.c
 push_swap
 push_swap_visualizer
+push_swap_tester
 _practice
 push-swap-pain
 tests
@@ -84,3 +86,4 @@ test.c
 test.sh
 test2.c
 push_swap.sh
+trash_box

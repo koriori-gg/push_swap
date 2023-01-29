@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   small2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/27 12:09:38 by ihashimo          #+#    #+#             */
+/*   Updated: 2023/01/27 12:09:39 by ihashimo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 //sort b
 void	ft_sort_two_reverse(t_stack **stack)
 {
 	t_stack	*head;
-	int	num[2];
-	int	i;
+	int		num[2];
+	int		i;
 
 	head = *stack;
 	i = 0;
@@ -21,8 +33,8 @@ void	ft_sort_two_reverse(t_stack **stack)
 void	ft_sort_three_reverse(t_stack **stack)
 {
 	t_stack	*head;
-	int	num[3];
-	int	i;
+	int		num[3];
+	int		i;
 
 	head = *stack;
 	i = 0;
@@ -52,17 +64,17 @@ void	ft_sort_three_reverse(t_stack **stack)
 
 void	ft_move_min(int size, int border, t_stack **a, t_stack **b)
 {
-	t_stack	*top;
-	int	count;
+	t_stack	*head;
+	int		count;
 
-	top = *a;
+	head = *a;
 	count = 0;
-	while(count < size)
+	while (count < size)
 	{
-		if (top->value <= border)
-			break;
-		top = top->next;
-		count++;	
+		if (head->value <= border)
+			break ;
+		head = head->next;
+		count++;
 	}
 	if (count > size / 2)
 	{
@@ -83,7 +95,7 @@ void	ft_move_min(int size, int border, t_stack **a, t_stack **b)
 	pb(a, b);
 }
 
-void	ft_sort_six_or_less(t_stack **a, t_stack **b)
+void	ft_sort_four_to_six(t_stack **a, t_stack **b)
 {
 	int	size;
 	int	i;
