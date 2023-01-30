@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:07:23 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/27 12:07:24 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:46:10 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	pa(t_stack **stack_a, t_stack **stack_b)
 	tmp = *stack_b;
 	*stack_b = (*stack_b)->next;
 	ft_stackadd_front(stack_a, tmp);
-	write(1, "pa\n", 3);
+	ft_printf("pa\n");
 }
 
 void	pb(t_stack **stack_a, t_stack **stack_b)
@@ -37,5 +37,5 @@ void	pb(t_stack **stack_a, t_stack **stack_b)
 	tmp = *stack_a;
 	*stack_a = (*stack_a)->next;
 	ft_stackadd_front(stack_b, tmp);
-	write(1, "pb\n", 3);
+	ft_printf("pb\n");
 }

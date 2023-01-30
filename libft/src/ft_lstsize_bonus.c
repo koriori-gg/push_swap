@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_print.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 12:09:55 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/27 12:10:18 by ihashimo         ###   ########.fr       */
+/*   Created: 2022/11/07 13:29:26 by ihashimo          #+#    #+#             */
+/*   Updated: 2023/01/10 10:40:55 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void print_stack(t_stack *stack)
+int	ft_lstsize(t_list *lst)
 {
-	t_stack	*node;
+	int		size;
 
-	node = stack;
-	while (node != NULL)
+	size = 0;
+	if (!lst)
+		return (0);
+	while (lst->next != NULL)
 	{
-		printf("%d, ", node->value);
-		node = node->next;
+		size++;
+		lst = lst->next;
 	}
-}
-
-void	print_testcase(int argc, char **argv)
-{
-	int	i;
-
-	i = 1;
-	printf("\ntestcase: ");
-	while (i < argc)
-		printf("%s ",argv[i++]);
-	printf("\n");
+	return (size + 1);
 }

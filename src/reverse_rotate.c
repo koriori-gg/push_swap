@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 11:59:22 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/27 12:00:12 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:45:33 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	rra(t_stack **stack, int flg)
 	last->next = NULL;
 	(*stack)->next = first;
 	if (!flg)
-		write(1, "rra\n", 4);
+		ft_printf("rra\n");
 }
 
 void	rrb(t_stack **stack, int flg)
@@ -59,12 +59,12 @@ void	rrb(t_stack **stack, int flg)
 	last->next = NULL;
 	(*stack)->next = first;
 	if (!flg)
-		write(1, "rrb\n", 4);
+		ft_printf("rrb\n");
 }
 
 void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
 	rra(&*stack_a, 1);
 	rrb(&*stack_b, 1);
-	write(1, "rr\n", 3);
+	ft_printf("rr\n");
 }

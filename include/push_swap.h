@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/30 12:56:46 by ihashimo          #+#    #+#             */
+/*   Updated: 2023/01/30 14:36:33 by ihashimo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <stdio.h>
@@ -5,6 +17,8 @@
 # include <unistd.h>
 # include <limits.h>
 # include "../libft/include/libft.h"
+# include "../libft/include/ft_printf.h"
+# include "../libft/include/get_next_line.h"
 
 //連結リスト
 typedef struct s_stack
@@ -28,10 +42,10 @@ void	rr(t_stack **stack_a, t_stack **stack_b);
 void	rra(t_stack **stack, int flg);
 void	rrb(t_stack **stack, int flg);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
-//error handring <-staticにできないかを考え
-void	error();
-int	ft_atoi_ex(const char *nptr);
-void	judge_input(int argc, char **argv);
+//valid
+void	error(void);
+int		ft_atoi_ex(const char *nptr);
+void	valid_input(int argc, char **argv);
 //stack
 t_stack	*ft_stacknew(int value);
 t_stack	*ft_stacklast(t_stack *stack);
@@ -50,17 +64,15 @@ int		shrink_number(int *array, int size, int nbr);
 //input
 void	input_to_stack(t_stack **a, int argc, char **argv);
 void	double_check(int *array, int size);
-//order
-int		judge_order(t_stack **stack, int max, int min);
-int		search_max(t_stack **stack);
-int		search_min(t_stack **stack);
 //utils
 int		is_sorted(t_stack **stack);
-void 	ft_stackfree(t_stack **stack);
-//binary
-void	binary_radix_sort(t_stack **a, t_stack **b);
+void	ft_stackfree(t_stack **stack);
+//radix
 void	ternary_radix_sort(t_stack **a, t_stack **b);
+//ternary
+int		ternary_digit(t_stack **a, int count);
+int		is_ternary(t_stack **a, int count);
 //print
-void 	print_stack(t_stack *stack);
-void	print_testcase(int argc, char **argv);
+// void 	print_stack(t_stack *stack);
+// void	print_testcase(int argc, char **argv);
 #endif

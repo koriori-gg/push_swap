@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:01:22 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/27 12:01:22 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/30 10:37:37 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,27 @@ int	is_sorted(t_stack **stack)
 	}
 	return (1);
 }
+/*
+void print_stack(t_stack *stack)
+{
+	t_stack	*node;
+
+	node = stack;
+	while (node != NULL)
+	{
+		printf("%d, ", node->value);
+		node = node->next;
+	}
+}
+
+void	print_testcase(int argc, char **argv)
+{
+	int	i;
+
+	i = 1;
+	printf("\ntestcase: ");
+	while (i < argc)
+		printf("%s ",argv[i++]);
+	printf("\n");
+}
+*/

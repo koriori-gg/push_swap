@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:00:58 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/27 12:00:59 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/30 15:09:09 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,11 @@ int	ft_atoi_ex(const char *nptr)
 	return (sign * num);
 }
 
-void	error()
+void	error(void)
 {
-	write(1, "error\n", 6);
+	ft_printf("Error\n");
 	exit(1);
+	//exit(0);
 }
 
 static int	ft_isnumber(char *argv_i)
@@ -73,7 +74,7 @@ static int	ft_isnumber(char *argv_i)
 	return (0);
 }
 
-void	judge_input(int argc, char **argv)
+void	valid_input(int argc, char **argv)
 {
 	int		i;
 	int		nbr;

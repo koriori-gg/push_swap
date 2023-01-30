@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:05:31 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/27 12:05:36 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:59:55 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	input_to_stack(t_stack **a, int argc, char **argv)
 			*a = ft_stacknew(num);
 		else
 			ft_stackadd_back(a, ft_stacknew(num));
-	//TODO: mallocできなかった時のerror処理 -> stacknew内で出来てるから大丈夫
 		i++;
 	}
+	free(array);
 }
 
 void	double_check(int *array, int size)

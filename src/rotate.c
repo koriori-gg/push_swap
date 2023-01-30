@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:08:09 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/27 12:08:10 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:46:47 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ra(t_stack **stack, int flg)
 {
 	int		size;
 	t_stack	*tmp;
-	
+
 	size = ft_stacksize(*stack);
 	if (size <= 1)
 		return ;
@@ -25,14 +25,14 @@ void	ra(t_stack **stack, int flg)
 	tmp->next = NULL;
 	ft_stackadd_back(stack, tmp);
 	if (!flg)
-		write(1, "ra\n", 3);
+		ft_printf("ra\n");
 }
 
 void	rb(t_stack **stack, int flg)
 {
 	int		size;
 	t_stack	*tmp;
-	
+
 	size = ft_stacksize(*stack);
 	if (size <= 1)
 		return ;
@@ -41,12 +41,12 @@ void	rb(t_stack **stack, int flg)
 	tmp->next = NULL;
 	ft_stackadd_back(stack, tmp);
 	if (!flg)
-		write(1, "rb\n", 3);
+		ft_printf("rb\n");
 }
 
 void	rr(t_stack **stack_a, t_stack **stack_b)
 {
 	ra(&*stack_a, 1);
 	rb(&*stack_b, 1);
-	write(1, "rr\n", 3);
+	ft_printf("rr\n");
 }

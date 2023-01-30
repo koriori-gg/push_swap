@@ -12,10 +12,8 @@ SRCS = src/push_swap.c \
 	src/shrink.c \
 	src/utils.c \
 	src/input.c \
-	src/order.c \
-	src/binary.c \
 	src/ternary.c \
-	src/test_print.c
+	src/ternary_utils.c
 
 LIBFT_DIR = libft
 

@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:09:38 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/27 12:09:39 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:02:11 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,11 @@ void	ft_sort_three_reverse(t_stack **stack)
 {
 	t_stack	*head;
 	int		num[3];
-	int		i;
 
 	head = *stack;
-	i = 0;
-	while (head != NULL)
-	{
-		num[i] = head->value;
-		head = head->next;
-		i++;
-	}
+	num[0] = head->value;
+	num[1] = head->next->value;
+	num[2] = head->next->next->value;
 	if (num[0] < num[1] && num[1] < num[2] && num[0] < num[2])
 	{
 		rb(stack, 0);
@@ -62,20 +57,8 @@ void	ft_sort_three_reverse(t_stack **stack)
 	}
 }
 
-void	ft_move_min(int size, int border, t_stack **a, t_stack **b)
+void	find_min(int count, int size, t_stack **a)
 {
-	t_stack	*head;
-	int		count;
-
-	head = *a;
-	count = 0;
-	while (count < size)
-	{
-		if (head->value <= border)
-			break ;
-		head = head->next;
-		count++;
-	}
 	if (count > size / 2)
 	{
 		while (size - count > 0)
@@ -92,6 +75,23 @@ void	ft_move_min(int size, int border, t_stack **a, t_stack **b)
 			count--;
 		}
 	}
+}
+
+void	ft_move_min(int size, int border, t_stack **a, t_stack **b)
+{
+	t_stack	*head;
+	int		count;
+
+	head = *a;
+	count = 0;
+	while (count < size)
+	{
+		if (head->value <= border)
+			break ;
+		head = head->next;
+		count++;
+	}
+	find_min(count, size, a);
 	pb(a, b);
 }
 

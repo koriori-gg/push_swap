@@ -6,81 +6,81 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 18:34:35 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/29 18:56:20 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:21:15 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	ternary_digit(t_stack **a, int count)
+void	push_atob(t_stack **a, t_stack **b, int count)
 {
-	int	num;
+	int	a_size;
+	int	i;
 
-	num = (*a)->value;
-	while (count - 1 > 0)
+	a_size = ft_stacksize(*a);
+	i = 0;
+	while (i < a_size)
 	{
-		num = num / 3;
-		count--;
+		if (ternary_digit(a, count) == 2)
+			ra(a, 0);
+		else
+			pb(a, b);
+		i++;
 	}
-	return (num % 3);
 }
 
-int	ternary_count(t_stack **a, int count)
+static void	ternary_sort(t_stack **a, t_stack **b, int count)
 {
-	int		digit[3];
-	int		num;
-	t_stack	*head;
+	int	b_size;
+	int	i;
 
-	digit[0] = 0;
-	digit[1] = 0;
-	digit[2] = 0;
-	head = *a;
-	while (head != NULL)
+	push_atob(a, b, count);
+	b_size = ft_stacksize(*b);
+	i = 0;
+	while (i < b_size)
 	{
-		num = head->value;
-		while (count - 1 > 0)
-		{
-			num = num / 3;
-			count--;
-		}
-		digit[num % 3] = 1;
-		head = head->next;
+		if (ternary_digit(b, count) == 1)
+			pa(a, b);
+		else
+			rb(b, 0);
+		i++;
 	}
-	return (4 * digit[2] + 2 * digit[1] + 1 * digit[0]);
+	while (ft_stacksize(*b) > 0)
+		pa(a, b);
+}
+
+static void	binary_sort(t_stack **a, t_stack **b, int count)
+{
+	int	a_size;
+	int	i;
+
+	a_size = ft_stacksize(*a);
+	i = 0;
+	while (i < a_size)
+	{
+		if (is_sorted(a))
+			break ;
+		if (ternary_digit(a, count) != 0)
+			ra(a, 0);
+		else
+			pb(a, b);
+		i++;
+	}
+	while (ft_stacksize(*b) > 0)
+		pa(a, b);
 }
 
 void	ternary_radix_sort(t_stack **a, t_stack **b)
 {
 	int	count;
-	int	a_size;
-	int	b_size;
-	int	i;
 
-	count = 0;
-	a_size = ft_stacksize(*a);
+	count = 1;
 	while (!is_sorted(a))
 	{
-		i = 0;
-		while (i < a_size)
-		{
-			if (ternary_digit(a, count) == 2)
-				ra(a, 0);
-			else
-				pb(a, b);
-			i++;
-		}
-		b_size = ft_stacksize(*b);
-		i = 0;
-		while (i < b_size)
-		{
-			if (ternary_digit(b, count) == 1)
-				pa(a, b);
-			else
-				rb(b, 0);
-			i++;
-		}
-		while (ft_stacksize(*b) > 0)
-			pa(a, b);
+		if (is_ternary(a, count))
+			ternary_sort(a, b, count);
+		else
+			binary_sort(a, b, count);
 		count++;
 	}
 }
