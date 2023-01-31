@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:00:58 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/30 15:09:09 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/31 12:03:16 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	error(void)
 {
 	ft_printf("Error\n");
 	exit(1);
-	//exit(0);
 }
 
 static int	ft_isnumber(char *argv_i)
@@ -80,7 +79,7 @@ void	valid_input(int argc, char **argv)
 	int		nbr;
 
 	if (argc <= 1)
-		error();
+		exit(0);
 	i = 1;
 	while (i < argc)
 	{

@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 11:57:23 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/30 14:47:37 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/01/30 16:48:52 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ void	ss(t_stack **stack_a, t_stack **stack_b)
 {
 	sa(&*stack_a, 1);
 	sb(&*stack_b, 1);
-	write(1, "ss\n", 3);
+	ft_printf("ss\n");
 }

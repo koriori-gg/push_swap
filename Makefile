@@ -13,7 +13,9 @@ SRCS = src/push_swap.c \
 	src/utils.c \
 	src/input.c \
 	src/ternary.c \
-	src/ternary_utils.c
+	src/ternary_utils.c \
+	src/judge.c \
+	src/free.c
 
 LIBFT_DIR = libft
 
