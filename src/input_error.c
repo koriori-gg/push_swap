@@ -6,7 +6,7 @@
 /*   By: ihashimo <maaacha.kuri05@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:00:58 by ihashimo          #+#    #+#             */
-/*   Updated: 2023/01/31 12:03:16 by ihashimo         ###   ########.fr       */
+/*   Updated: 2023/02/01 09:42:45 by ihashimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ static int	ft_isnumber(char *argv_i)
 	int	j;
 
 	j = 0;
+	if (argv_i[j] == '\0')
+		error();
 	if (argv_i[j] == '-' || argv_i[j] == '+')
 		j++;
 	while (argv_i[j])

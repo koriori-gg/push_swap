@@ -10,7 +10,6 @@ SRCS = src/push_swap.c \
 	src/small.c \
 	src/small2.c \
 	src/shrink.c \
-	src/utils.c \
 	src/input.c \
 	src/ternary.c \
 	src/ternary_utils.c \
