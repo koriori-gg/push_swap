@@ -28,8 +28,6 @@ CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME): $(OBJS) $(LIBFT_OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT_OBJ)
